@@ -65,7 +65,8 @@ class DLM():
             self.thetas[:, t, 0] = self.m_0
         self.m[:, 0] = self.m_0
         self.C[:, :, 0] = self.c_0
-        self.W[:, :, 0] = self.scale_w / (self.df_w + self.P + 1)
+        #self.W[:, :, 0] = self.scale_w / (self.df_w + self.P + 1)
+        self.W[:, :, 0] = self.iw.rvs(self.df_w, self.scale_w)
 
         for i in range(1, n_samples+2):
             if i % print_every == 0:
